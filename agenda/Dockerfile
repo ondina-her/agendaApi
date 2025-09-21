@@ -8,9 +8,10 @@ COPY mvnw .
 COPY .mvn .mvn
 COPY src ./src
 
-# 👇 Esta línea es clave
+# 👇 Dar permisos de ejecución a mvnw
 RUN chmod +x mvnw
 
+# 👇 Compilar el proyecto
 RUN ./mvnw clean package -DskipTests
 
 # Etapa de ejecución
