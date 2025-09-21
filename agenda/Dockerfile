@@ -1,5 +1,5 @@
 # Etapa de construcción
-FROM maven:3.9.4-eclipse-temurin-21-alpine AS build
+FROM eclipse-temurin:21-jdk-alpine AS build
 
 WORKDIR /workspace
 
@@ -7,6 +7,9 @@ COPY pom.xml .
 COPY mvnw .
 COPY .mvn .mvn
 COPY src ./src
+
+# 👇 Esta línea es clave
+RUN chmod +x mvnw
 
 RUN ./mvnw clean package -DskipTests
 
